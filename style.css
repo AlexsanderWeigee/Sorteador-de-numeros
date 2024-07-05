@@ -149,3 +149,25 @@ button:disabled {
         font-size: 50px;
     }
 }
+
+
+/*.container__textoDeErro {
+    background: white;
+    font-size: 1.3em;
+    color: #041832;
+    padding: 1em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+    height: 250px;
+    border-radius: 15px;
+}
+
+.h2 {
+    color: #041832;
+}
+    
+Vou arrumar isso mais tarde
+*/

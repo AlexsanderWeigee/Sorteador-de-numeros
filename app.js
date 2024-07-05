@@ -1,28 +1,35 @@
 var sorteado = false;
 
 function sortear() {
-    if(sorteado == false){
-    let quantidade = document.getElementById("quantidade").value;
-    let de = parseInt(document.getElementById("de").value);
-    let ate = parseInt(document.getElementById("ate").value);
+    if (sorteado == false) {
+        let quantidade = document.getElementById("quantidade").value;
+        let de = parseInt(document.getElementById("de").value);
+        let ate = parseInt(document.getElementById("ate").value);
 
-    let sorteados = [];
-    let numero;
+        let sorteados = [];
+        let numero;
 
-    for (let i = 0; i < quantidade; i++) {
-        numero = obterNumeroAleatorio(de, ate);
+        let calulo = ate - de;
+        if (quantidade <= calulo) {
+            for (let i = 0; i < quantidade; i++) {
+                numero = obterNumeroAleatorio(de, ate);
 
-        while (sorteados.includes(numero)) {
-            numero = obterNumeroAleatorio(de, ate);
+                while (sorteados.includes(numero)) {
+                    numero = obterNumeroAleatorio(de, ate);
+                }
+
+                sorteados.push(numero);
+            }
+
+        } else {
+            //let textoErro = document.getElementById("textoDeErro"); Vou arrumar isso mais tarde
+            alert("Não é possivel sortear uma quantidade de números maior do que o intervalo de números");
         }
-        
-        sorteados.push(numero);
-    }
 
-    let resultado = document.getElementById("resultado");
-    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados} </label>`;
-    alterarStatusBotao();
-    sorteado = true;
+        let resultado = document.getElementById("resultado");
+        resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados} </label>`;
+        alterarStatusBotao();
+        sorteado = true;
     }
 }
 
@@ -48,12 +55,12 @@ function alterarStatusBotao() {
 }
 
 function reiniciar() {
-    if(sorteado == true) {
-    document.getElementById("quantidade").value = " ";
-    document.getElementById("de").value = " ";
-    document.getElementById("ate").value = " ";
-    document.getElementById("resultado").innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>';
-    alterarStatusBotao();
-    sorteado = false;
+    if (sorteado == true) {
+        document.getElementById("quantidade").value = " ";
+        document.getElementById("de").value = " ";
+        document.getElementById("ate").value = " ";
+        document.getElementById("resultado").innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>';
+        alterarStatusBotao();
+        sorteado = false;
     }
 }
